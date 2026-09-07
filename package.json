@@ -1,15 +1,28 @@
 {
   "name": "nodejs_advanced_concepts",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node.Js Advanced Concepts",
   "license": "ISC",
-  "author": "",
+  "author": "God_Of_Code",
   "type": "commonjs",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "axios": "0.16.2",
+    "materialize-css": "0.100.2",
+    "react": "16.0.0-alpha.13",
+    "react-dom": "16.0.0-alpha.13",
+    "react-redux": "5.0.5",
+    "react-router-dom": "4.1.1",
+    "react-scripts": "1.1.5",
+    "redux": "3.7.1",
+    "redux-form": "7.0.1",
+    "redux-thunk": "2.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
