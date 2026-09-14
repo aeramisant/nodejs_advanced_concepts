@@ -6,7 +6,9 @@ Starting project for a course on Advanced Node @ Udemy
 
 - Run `npm install` in the root of the project to install server dependencies
 - Change into the client directory and run `npm install --legacy-peer-deps`
+- In another terminal run redis using `redis-server /opt/homebrew/etc/redis.conf`
 - Change back into the root of the project and run `npm run dev` to start the server
+- After redis is not needed use `redis-cli shutdown`
 - Access the application at `localhost:3000` in your browser
 
 **Important:**
