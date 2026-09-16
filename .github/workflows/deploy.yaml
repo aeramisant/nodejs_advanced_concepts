@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: ['18.15.0']
+        node-version: ['18.20.8']
 
     services:
       mongodb:
@@ -26,6 +26,7 @@ jobs:
 
     env:
       NODE_ENV: ci
+      NODE_OPTIONS: --openssl-legacy-provider
       PORT: 3000
       COOKIE_KEY: '123123123'
       GOOGLE_CLIENT_ID: 'ci-google-client-id'
