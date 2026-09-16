@@ -1,0 +1,55 @@
+name: deploy
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: ['18.20.8']
+
+    services:
+      mongodb:
+        image: mongo
+        ports:
+          - 27017:27017
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+
+    env:
+      NODE_ENV: ci
+      NODE_OPTIONS: --openssl-legacy-provider
+      PORT: 3000
+      COOKIE_KEY: '123123123'
+      GOOGLE_CLIENT_ID: 'ci-google-client-id'
+      GOOGLE_CLIENT_SECRET: 'ci-google-client-secret'
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install Dependencies
+        run: |
+          npm install --legacy-peer-deps
+          npm run build
+      - name: Start server and run tests
+        run: |
+          npm run start > server.log 2>&1 &
+          for i in {1..30}; do
+            if curl -sf http://localhost:3000 > /dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          curl -sf http://localhost:3000 || (echo "Server failed to start:" && cat server.log && exit 1)
+          npm run test
