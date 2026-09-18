@@ -4,4 +4,7 @@ module.exports = {
   mongoURI: 'mongodb://127.0.0.1/blog_ci',
   cookieKey: process.env.COOKIE_KEY,
   redisUrl: 'redis://127.0.0.1:6379',
+  gcsBucket: process.env.GCS_BUCKET,
+  googleCloudProjectId: process.env.GOOGLE_CLOUD_PROJECT_ID,
+  googleCloudKeyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS,
 };

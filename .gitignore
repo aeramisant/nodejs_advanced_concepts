@@ -6,6 +6,11 @@ node_modules/
 .env.*
 !.env.example
 
+# Google Cloud service account keys
+config/gcs-key.json
+*-service-account*.json
+google-cloud-*.json
+
 # Logs
 logs/
 *.log
@@ -27,6 +32,7 @@ Thumbs.db
 dist/
 build/
 coverage/
+uploads/
 
 # Cursor
 .cursor/

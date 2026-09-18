@@ -13,6 +13,11 @@ class BlogList extends Component {
     return map(this.props.blogs, blog => {
       return (
         <div className="card darken-1 horizontal" key={blog._id}>
+          <div className="card-image">
+            {blog.image ? (
+              <img alt={blog.title} src={blog.image} style={{ height: '125px' }} />
+            ) : null}
+          </div>
           <div className="card-stacked">
             <div className="card-content">
               <span className="card-title">{blog.title}</span>

@@ -12,11 +12,12 @@ class BlogShow extends Component {
       return '';
     }
 
-    const { title, content } = this.props.blog;
+    const { title, content, image } = this.props.blog;
 
     return (
       <div>
         <h3>{title}</h3>
+        {image ? <img alt={title} src={image} style={{ maxWidth: '100%' }} /> : null}
         <p>{content}</p>
       </div>
     );
